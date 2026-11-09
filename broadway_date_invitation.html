@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Night on Broadway</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    padding: 24px; color: #fff8f0;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(177,119,61,.22), transparent 48%),
+      linear-gradient(145deg, #100e12, #24151b 55%, #100e12);
+  }
+  .card {
+    width: min(100%, 520px); padding: 34px 28px 30px; text-align: center;
+    border: 1px solid rgba(221,184,120,.65); border-radius: 18px;
+    background: linear-gradient(160deg, rgba(48,29,35,.96), rgba(20,17,22,.98));
+    box-shadow: 0 24px 80px rgba(0,0,0,.5), inset 0 0 0 5px rgba(221,184,120,.06);
+    position: relative; overflow: hidden;
+  }
+  .card:before, .card:after {
+    content: "✦"; position: absolute; color: #d9b16d; opacity: .75; font-size: 20px;
+  }
+  .card:before { top: 18px; left: 20px; }
+  .card:after { top: 18px; right: 20px; }
+  .eyebrow { color: #e1bd7d; letter-spacing: .28em; text-transform: uppercase; font: 11px Arial, sans-serif; }
+  .curtain { font-size: 30px; margin: 20px 0 8px; }
+  h1 { font-size: clamp(38px, 10vw, 54px); line-height: 1; font-weight: normal; margin: 10px 0 14px; color: #f4d9a4; }
+  .rule { width: 76px; height: 1px; background: #c59b5d; margin: 22px auto; }
+  .intro { font-size: 18px; line-height: 1.6; color: #f3e8dc; }
+  .details { margin: 24px 0; padding: 16px; border-top: 1px solid rgba(221,184,120,.35); border-bottom: 1px solid rgba(221,184,120,.35); }
+  .detail-label { font: 10px Arial, sans-serif; text-transform: uppercase; letter-spacing: .2em; color: #d9b16d; margin-bottom: 7px; }
+  .detail-value { font-size: 20px; }
+  .question { font-size: 24px; line-height: 1.35; color: #f4d9a4; margin: 24px 0 18px; }
+  .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  button {
+    border: 1px solid #d9b16d; border-radius: 999px; padding: 13px 24px;
+    font: 14px Arial, sans-serif; cursor: pointer; transition: transform .15s, background .15s;
+  }
+  button:hover { transform: translateY(-2px); }
+  .yes { background: #d9b16d; color: #21151a; font-weight: bold; }
+  .maybe { background: transparent; color: #f7ead8; }
+  #response { display: none; margin-top: 22px; padding: 16px; border-radius: 12px; background: rgba(217,177,109,.12); color: #f7e6c8; font-size: 18px; line-height: 1.5; }
+  .footer { margin-top: 28px; color: #bda99b; font: 10px Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">A special invitation</div>
+    <div class="curtain">🎭</div>
+    <h1>A Night<br>on Broadway</h1>
+    <div class="rule"></div>
+    <p class="intro">You are invited to an evening in New York City…<br>
+      A Broadway show, a little romance, and a night together.</p>
+    <section class="details">
+      <div class="detail-label">The occasion</div>
+      <div class="detail-value">A Broadway date night</div>
+      <div style="height:14px"></div>
+      <div class="detail-label">The date</div>
+      <div class="detail-value">In two weeks · November 23</div>
+      <div style="height:14px"></div>
+      <div class="detail-label">The show</div>
+      <div class="detail-value">A surprise for us to choose together</div>
+    </section>
+    <div class="question">Will you accept this invitation and go to Broadway with me?</div>
+    <div class="buttons">
+      <button class="yes" onclick="answer('yes')">Yes, absolutely ❤️</button>
+      <button class="maybe" onclick="answer('maybe')">Tell me more…</button>
+    </div>
+    <div id="response" role="status" aria-live="polite"></div>
+    <div class="footer">Dress up a little · Make a night of it</div>
+  </main>
+<script>
+function answer(choice) {
+  const box = document.getElementById('response');
+  box.style.display = 'block';
+  box.textContent = choice === 'yes'
+    ? "It's a date! ❤️ We'll pick the perfect Broadway show together."
+    : "The invitation comes with dinner, city lights, and a very good date. 😉";
+}
+</script>
+</body>
+</html>
